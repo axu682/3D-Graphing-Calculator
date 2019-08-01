@@ -1,0 +1,86 @@
+TP3 Update:
+A new Help section was added to provide info on keyboard shortcuts
+Axis grids and numbering was added
+Settings screen was created
+The program does nothing if an invalid setting or graph input is submitted to prevent error messages
+The input interface for all three types of graphs has been added
+The list of graphs allows for scrolling to accommodate many graphs
+Color is now an optional parameter and will default to black when not specified
+
+
+
+
+
+TP2 Update:
+-Cylindrical coordinates are not being considered in the near future.
+-I have written code to evaluate a string (and allows user input)
+-Perspective has been added in (toggled with "p")
+-Dots change size and color based on distance from viewer (toggle "i" to view dots)
+-Wires change color based on distance from viewere (toggle "o" to view wires)
+-Functions are now stored as instances of a class, allowing for there to be multiple graphs.
+-The project can be run as a script through 3Dcalc2.py
+-While the input screens for parametrics are not made yet, the hard-coded functions can be seen
+	by uncommenting lines 396-402 in 3Dcalc2.py
+-Don't click on "Parametric (2 Parameters)" or "Parametric (1 Parameter)"; you won't be able
+	to go back!
+
+-"-" and "=" to zoom in/out
+-"q"/"r" to rotate along "x-axis", "w"/"e" to stretch/shrink x-axis
+	"x-axis" in quotes because it's not a true x-axis rotation
+-"asdf" and "zxcv" are the corresponding controls for y-axis and z-axis, respectively
+	usage of "a" and "f" is not recommended (not a useful rotation, especially for functions of
+	the form z=f(x,y)
+-rotations are evaluated in a specific order: yaw (z), pitch ("x"), roll ("y")
+
+-Try putting in z=sinx+siny as a demo function; a specific syntax is required to graph things:
+	z=log10x instead of z=logx
+	z=~1 instead of z=-1 (minus is treated as a binary operation)
+	z=x*y instead of z=xy
+	z=x^2 instead of z=x**2
+-Power towers are evaluated from left to right instead of right to left
+	ex: 16^0.5^2=(16^0.5)^2=16, not 16^(0.5^2)=2
+-Default color is dark red, the syntax used for using custom colors is buggy
+
+-Current plans include to have working parametric input screens, settings screen, and custom color
+
+
+
+
+
+DESIGN PROPOSAL:
+
+Description:
+A graphing calculator in 3D that will take inputs of the form z=f(x,y), as well as 3D parametrics,
+cylindrical coordinates, and hopefully 3D parametrics with two parameters.
+
+Competitive analysis:
+Some people have created some pretty OP stuff online. I have seen people use wire frames to connect dots,
+use shading, create scatter plots, and have rotating axes. People have used external programs to aid them,
+such as Matplotlib. There's a guy that has this pretty input window that I don't know how to make.
+I have seen people have input boxes, but that requires me to write an interpreter for the string, which
+is tedious, so I'll just have it be a coded function(s) that you can modify in the code. I will also plan
+to use either color, size, or thickness to indicate distance from the viewer, and hopefully add perspective
+in.
+
+Structural plan:
+There will be different modes for different types of inputs (parametrics, z=f(x,y), etc.) that can be toggled
+on a separate screen. The keyboard will be used to change the model, though if there are enough commands,
+I may have to place this on a separate screen. When needed, there would be helper functions called to do
+brute force work.
+
+Algorithmic plan:
+I plan to represent the set of input (x,y)'s as a 3D list. Each row and column corresonds to a list
+representing coordinates. Functions would be used to turn these into pixel coordinates, and then to rotate
+it. Rotation would be a series of three rotations along an axis or plane, which can be done by multiplying
+complex numbers.
+
+Timeline plan:
+Thanksgiving: be able to handle simple functions of the form z=f(x,y)
+TP2: have parametrics in and some sort of helpful user interface
+After that, extra features can be added depending on how much time I have
+
+Version control plan:
+I have different versions of the code saved at different milestones, Google Drive
+
+Module list:
+None
